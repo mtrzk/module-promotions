@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mtrzk_promotions" resource="default" engine="innodb" comment="Promotion Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Name"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="mtrzk_promotions_group" resource="default" engine="innodb" comment="Promotions Group">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Name"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="mtrzk_promotions_group_related" resource="default" engine="innodb" comment="Promotions Group Assign">
+        <column xsi:type="int" name="promotion_id" padding="10" unsigned="true" nullable="false"
+                identity="false"/>
+        <column xsi:type="int" name="group_id" padding="10" unsigned="true" nullable="false"
+                identity="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="promotion_id"/>
+            <column name="group_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="MTRZK_PROMOTIONS_GROUP_ASSIGN_PROMOTIONS_ID"
+                    table="mtrzk_promotions_group_assign" column="promotion_id"
+                    referenceTable="mtrzk_promotions" referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="MTRZK_PROMOTIONS_GROUP_ASSIGN_GROUP_ID_PROMOTIONS_GROUP"
+                    table="mtrzk_promotions_group_assign" column="group_id"
+                    referenceTable="mtrzk_promotions_group"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

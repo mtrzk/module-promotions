@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mtrzk\Promotions\Api\Data\PromotionGroupInterface"
+                type="Mtrzk\Promotions\Model\PromotionGroup" />
+    <preference for="Mtrzk\Promotions\Api\PromotionGroupRepositoryInterface"
+                type="Mtrzk\Promotions\Model\PromotionGroupRepository" />
+    <preference for="Mtrzk\Promotions\Api\Data\PromotionGroupSearchResultInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+    <preference for="Mtrzk\Promotions\Api\Data\PromotionInterface"
+                type="Mtrzk\Promotions\Model\Promotion" />
+    <preference for="Mtrzk\Promotions\Api\PromotionRepositoryInterface"
+                type="Mtrzk\Promotions\Model\PromotionRepository" />
+    <preference for="Mtrzk\Promotions\Api\Data\PromotionSearchResultInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+   <type name="Mtrzk\Promotions\Model\Promotion">
+        <arguments>
+            <argument name="promotionGroupRepository"
+                      xsi:type="object">Mtrzk\Promotions\Api\PromotionGroupRepositoryInterface\Proxy</argument>
+            <argument name="searchCriteriaBuilder"
+                      xsi:type="object">Magento\Framework\Api\SearchCriteriaBuilder\Proxy</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/promotions" method="GET">
+        <service class="Mtrzk\Promotions\Api\PromotionRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotions_view" />
+        </resources>
+    </route>
+    <route url="/V1/promotions/:id" method="GET">
+        <service class="Mtrzk\Promotions\Api\PromotionRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotions_view" />
+        </resources>
+    </route>
+    <route url="/V1/promotions" method="POST">
+        <service class="Mtrzk\Promotions\Api\PromotionRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotions_save" />
+        </resources>
+    </route>
+    <route url="/V1/promotions/:id" method="DELETE">
+        <service class="Mtrzk\Promotions\Api\PromotionRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotions_delete" />
+        </resources>
+    </route>
+
+    <route url="/V1/promotion-groups" method="GET">
+        <service class="Mtrzk\Promotions\Api\PromotionGroupRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotion_groups_view" />
+        </resources>
+    </route>
+    <route url="/V1/promotion-groups/:id" method="GET">
+        <service class="Mtrzk\Promotions\Api\PromotionGroupRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotion_groups_view" />
+        </resources>
+    </route>
+    <route url="/V1/promotion-groups" method="POST">
+        <service class="Mtrzk\Promotions\Api\PromotionGroupRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotion_groups_save" />
+        </resources>
+    </route>
+    <route url="/V1/promotion-groups/:id" method="DELETE">
+        <service class="Mtrzk\Promotions\Api\PromotionGroupRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Mtrzk_Promotions::promotion_groups_delete" />
+        </resources>
+    </route>
+</routes>

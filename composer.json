@@ -1,0 +1,27 @@
+{
+    "name": "mtrzk/module-promotions",
+    "license": [
+        "proprietary"
+    ],
+    "description": "",
+    "homepage": "https://materzok.pl/",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Marcin Materzok",
+            "email": "marcin@materzok.pl"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mtrzk\\Promotions\\": ""
+        }
+    }
+}
