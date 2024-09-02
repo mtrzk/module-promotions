@@ -21,7 +21,7 @@
             "PRIMARY": true
         }
     },
-    "mtrzk_promotions_group_assign": {
+    "mtrzk_promotions_group_related": {
         "column": {
             "promotion_id": true,
             "group_id": true
